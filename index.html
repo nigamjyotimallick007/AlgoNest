@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Full-Screen HTML & CSS Editor</title>
+
+        <!-- CodeMirror Styles for Syntax Highlighting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/dracula.min.css"> <!-- Dark Theme -->
+        
+        <style>
+            .raleway-font {
+                font-family: "Raleway", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 100;
+                font-style: normal;
+            }
+
+            body {
+                background-color: #c4d7fff1;
+                font-family: Raleway;
+                padding: 30px;
+            }
+
+            .con {
+                background-color: aliceblue;
+                padding: 30px;
+                border-radius: 20px;
+            }
+
+            .con5 {
+                background-color: aliceblue;
+                padding: 30px;
+                border-radius: 20px;
+                margin-top: 40px;
+            }
+
+            .txt {
+                font-size: 50px;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .txt2 {
+                font-size: larger;
+                font-weight: 600;
+                text-align: center;
+                margin-top: -10px;
+            }
+
+            .para {
+                font-size: medium;
+                font-weight: 400;
+                text-align: left;
+                margin-left: 40px;
+                margin-top: 60px;
+                margin-right: 60px;
+            }
+
+            .para2 {
+                font-size: medium;
+                font-weight: 400;
+                text-align: left;
+                margin-left: 40px;
+                margin-top: 20px;
+                margin-right: 60px;
+            }
+
+            .vid{
+                width: 500px;
+                margin: auto;
+                border-radius: 15px;
+            }
+
+            .con2{
+                text-align: center;
+                align-content: center;
+            }
+
+            .para3 {
+                font-size: small;
+                font-weight: 400;
+                text-align: center;
+                margin-left: 40px;
+                margin-top: 20px;
+                margin-right: 60px;
+                margin-top: 0px;
+            }
+
+            .para4 {
+                font-size: small;
+                font-weight: 400;
+                text-align: left;
+                margin-left: 40px;
+                margin-top: 20px;
+                margin-right: 60px;
+            }
+
+            .con3 {
+                border: 1px solid black;
+                border-radius: 20px;
+            }
+
+            .txt3 {
+                font-size: x-large;
+                font-weight: bold;
+                text-align: left;
+                margin-left: 40px;
+                margin-top: 100px;
+                margin-bottom: 0px;
+            }
+
+            .txt4 {
+                font-size: x-large;
+                font-weight: bold;
+                text-align: left;
+                margin-left: 40px;
+                margin-bottom: 0px;
+            }
+
+            .textst1 {
+                color: blue;
+            }
+
+            .textst2 {
+                color: rgb(88, 0, 189);
+            }
+
+            .textst3 {
+                color: red;
+            }
+
+
+
+
+            .editor-container {
+                 display: flex; 
+                 flex-grow: 1; 
+                 width: 100%; 
+                 height: 100vh; 
+            }
+
+            .editor { 
+                flex: 1; 
+                padding: 10px; 
+                display: flex; 
+                flex-direction: column; 
+            }
+        
+            .CodeMirror { 
+                height: 100%; 
+                font-size: 16px; 
+            }
+
+            #output-container { 
+                flex: 1; 
+                padding: 10px; 
+                background: #282828; 
+                color: white; 
+                border-left: 2px solid #444; 
+                display: flex; 
+            }
+
+            #output { 
+                width: 100%; 
+                height: 100%; 
+                border: none; 
+                background: white; 
+            }
+        
+            button { 
+                padding: 10px; 
+                font-size: 16px; 
+                cursor: pointer; 
+                background: #ff6600; 
+                color: white; 
+                border: none; 
+            }
+
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="con">
+            <h1 class="txt">AlgoNest</h1>
+            <h3 class="txt2">Lesson 3: Understanding HTML Heading Elements</h3>
+            <h4 class="txt3">What is a Heading in HTML?</h4>
+            <p class="para2">A heading in HTML is like a <strong>title</strong> for a section of text. It helps organize content by giving important topics <strong>a clear, bold title</strong>. Think of headings as chapter names in a book—each chapter has a title that tells you what it's about.</p>
+            <h4 class="txt4">Why Use Headings?</h4>
+            <p class="para2">
+                &bullet; Better Reading: They make text clear and easy to follow. <br>
+                &bullet; Google-Friendly: Search engines like headings (they help in ranking websites). <br>
+                &bullet; Help for Everyone: Screen readers use headings to help visually impaired users.
+            </p>
+            <h4 class="txt4">Types of Headings in HTML</h4>
+            <p class="para2">HTML headings come in <strong>six levels</strong>. Each level has a<strong> different size and importance</strong>. <br><br>
+                🔹 1. <strong><span class="textst2">&lt;h1&gt;</span></strong> - Main Title (Most Important) <br><br>
+                &bullet; This is the biggest heading. <br>
+                &bullet; Used for the main topic or title of a webpage. <br>
+                &bullet; Every webpage should only have one<span class="textst3"> &lt;h1></span> (Think of it like the name of a book). <br><br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h1></span>Welcome<span class="textst3">&lt;/h1&gt;</span>
+                    </code>
+                </pre>
+            
+            </p>
+            <p class="para2">    
+                
+                🔹 2. <strong><span class="textst2">&lt;h2&gt;</span></strong> - Section Title (Less Important Than <span class="textst3">&lt;h1&gt;</span>) <br><br>
+                &bullet; This is a subheading used to divide sections. <br>
+                &bullet; It's smaller than <span class="textst3">&lt;h1&gt;</span>, but still important. <br>
+                &bullet; Think of it like chapter titles in a book. <br><br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h2></span>About Us<span class="textst3">&lt;/h2&gt;</span>
+                    </code>
+                </pre>
+                
+            </p>
+            <p class="para2">
+
+                🔹 3. <strong><span class="textst2">&lt;h3&gt;</span></strong> - Subsection Title <br><br>
+                &bullet; This is a smaller subheading inside a <span class="textst3">&lt;h2&gt;</span> section. <br>
+                &bullet; Use it for topics inside a section. <br><br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h3></span>Information<span class="textst3">&lt;/h3&gt;</span>
+                    </code>
+                </pre>
+                
+            </p>
+            <p class="para2">   
+
+                🔹 4. <strong><span class="textst2">&lt;h4&gt;</span></strong> - Detailed Heading <br><br>
+                &bullet; Even smaller than <span class="textst3">&lt;h3&gt;</span>. <br>
+                &bullet; Use it when you need more details inside a topic. <br> <br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h4></span>A Coffee with the PC<span class="textst3">&lt;/h4&gt;</span>
+                    </code>
+                </pre>
+                
+            </p> 
+            <p class="para2"> 
+                
+                🔹 5. <strong><span class="textst2">&lt;h5&gt;</span></strong> - Tiny Heading <br><br>
+                &bullet; This is a less important heading inside <span class="textst3">&lt;h4&gt;</span>. <br>
+                &bullet; Rarely used, but sometimes helpful for detailed organization. <br><br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h5></span>A Founder's Story<span class="textst3">&lt;/h5&gt;</span>
+                    </code>
+                </pre>
+                
+            </p> 
+            <p class="para2">
+
+                🔹 6. <strong><span class="textst2">&lt;h5&gt;</span></strong> - Smallest Heading <br><br>
+                &bullet; Least important, smallest in size. <br>
+                &bullet; Usually used for very small sections. <br><br>
+                
+                Example:
+                <pre>
+                    <code>        
+                        <span class="textst3">&lt;h6></span>The Early Days<span class="textst3">&lt;/h6&gt;</span>
+                    </code>
+                </pre>
+            
+            </p>
+            <p class="para2">
+                
+                📝<strong> Best Practices for Using Headings</strong> <br>
+                &checkmark; Use <span class="textst2">&lt;h1&gt;</span> once (for the main title). <br>
+                &checkmark; Follow order (<span class="textst2">&lt;h1&gt;</span> → <span class="textst2">&lt;h2&gt;</span> → <span class="textst2">&lt;h3&gt;</span>, etc.). <br>
+                &checkmark; Headings should describe the content (not just be for style). <br>
+                &checkmark; Use headings to organize information, not just make text bigger. <br>
+                💡 Think of headings like a tree: <br>
+                &bullet; <span class="textst3">&lt;h1&gt;</span> is the root (main title). <br>
+                &bullet; <span class="textst3">&lt;h2&gt;</span> are the big branches (sections). <br>
+                &bullet; <span class="textst3">&lt;h3&gt;</span> and smaller ones are the leaves (detailed parts). <br>
+                
+            </p>
+            
+            <hr>
+            <p class="para2">
+                In simple words:<br>
+                <span  style="color: rgb(74, 3, 155);">
+                    <strong>
+                        Headings are like chapter titles in a book—each one helps people understand the content step by step. They are of 6 types from h1 to h6, higher the number next to h is smaller the size.
+                    </strong>
+                </span><br><br>
+                So thats all for this lesson, in the next lesson we will learn about <span style="color: rgb(40, 0, 105);"><i><u>Writing a HTML File in Proper Format</u></i></span>.<br><br>
+                You maybe wondering, why I only wrote the code in the example but did not  show the result.  Thats because, I want you to try it and see your result by yourself. 
+                
+            </p>
+            <p class="para2">
+                Below is a simple made code writer made by me, you can write the code in there and run it by yourself. Go Ahead!
+            </p>
+            
+            <div class="con3">
+                <p class="para4">Hindi Audio Explaination by Chat GPT</p>
+                <audio controls class="aud">
+                <source src="https://files.catbox.moe/fntksd.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+        </div>
+
+
+        <div class="con5">
+            <button onclick="updatePreview()">Run Code</button>
+        
+            <div class="editor-container">
+                <div class="editor">
+                    <label><strong>HTML Code:</strong></label>
+                    <textarea id="htmlEditor"></textarea>
+        
+                    <label><strong>CSS Code:</strong></label>
+                    <textarea id="cssEditor"></textarea>
+                </div>
+        
+                <div id="output-container">
+                    <iframe id="output"></iframe>
+                </div>
+            </div>
+        
+            <!-- CodeMirror Library -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/htmlmixed/htmlmixed.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/css/css.min.js"></script>
+        
+            <script>
+                // Initialize CodeMirror editors
+                var htmlEditor = CodeMirror.fromTextArea(document.getElementById("htmlEditor"), {
+                    mode: "htmlmixed",
+                    theme: "dracula",
+                    lineNumbers: true
+                });
+        
+                var cssEditor = CodeMirror.fromTextArea(document.getElementById("cssEditor"), {
+                    mode: "css",
+                    theme: "dracula",
+                    lineNumbers: true
+                });
+        
+                function updatePreview() {
+                    let htmlCode = htmlEditor.getValue();
+                    let cssCode = `<style>${cssEditor.getValue()}</style>`;
+                    let fullCode = `${htmlCode} ${cssCode}`;
+        
+                    let outputFrame = document.getElementById("output").contentDocument;
+                    outputFrame.open();
+                    outputFrame.write(fullCode);
+                    outputFrame.close();
+                }
+            </script>
+        </div>
+
+
+    </body>
+</html>
